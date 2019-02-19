@@ -6,26 +6,28 @@ using System.Threading.Tasks;
 
 namespace Challenge_03
 {
+    public enum OutingType { Golf, Bowling, AmusementPark, Concert, Other}
     public class KOutings
     {
-        public string Outing { get; set; }
+        public OutingType TypeofOuting { get; set; }
         public decimal Attendees { get; set; }
         public string Date { get; set; }
         public decimal CostPerson { get; set; }
         public decimal CostEvent { get; set; }
+
 
         public KOutings()
         {
 
         }
 
-        public KOutings(string outing, decimal attendees, string date, decimal costPerson, decimal costEvent)
+        public KOutings(OutingType typeOfOuting, decimal attendees, string date, decimal costPerson)
         {
-            Outing = outing;
+            TypeofOuting = typeOfOuting;
             Attendees = attendees;
             Date = date;
             CostPerson = costPerson;
-            CostEvent = costEvent;
+            CostEvent = CostPerson * Attendees;
         }
     }
 }
