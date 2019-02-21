@@ -6,12 +6,7 @@ using System.Threading.Tasks;
 
 namespace Challenge_04
 {
-    class Program
+    class KBadgesRepository
     {
-        static void Main(string[] args)
-        {
-            ProgramUI programUI = new ProgramUI();
-            programUI.Run();
-        }
     }
 }
