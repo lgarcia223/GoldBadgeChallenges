@@ -9,14 +9,18 @@ namespace Challenge_04
 
     public class KomodoBadge
     {
-        public KomodoBadge() { }
+        public int BadgeID { get; set; }
+        public List<string> DoorList { get; set; }
+
+        public KomodoBadge()
+        {
+
+        }
         public KomodoBadge(int badgeID, List<string> doorList)
         {
             BadgeID = badgeID;
             DoorList = doorList;
         }
 
-        public int BadgeID { get; set; }
-        public List<string> DoorList { get; set; }
     }
 }

@@ -7,11 +7,13 @@ namespace Challenge_04
     internal class ProgramUI
     {
         KBadgesRepository _kBadgesRepo = new KBadgesRepository();
+        Dictionary<int, List<string>> _badgedic;
 
         int _response;
 
         internal void Run()
         {
+            _badgedic = _kBadgesRepo.GetDictionary();
             SeedData();
             while (_response != 4)
             {
@@ -78,7 +80,9 @@ namespace Challenge_04
             Console.WriteLine("Enter the ID number of the badge you would like to update:");
             int badgeID = int.Parse(Console.ReadLine());
 
-            Console.WriteLine($"Badge #{badgeID} has access to doors {_badgedic.TryGetValue(badgeID, out List<string> door)}.");
+            Console.WriteLine($"Badge #{badgeID} has access to doors ");
+            PrintDoorsByBadge(badgeID);
+
             Console.ReadKey();
 
             Console.WriteLine("What would you like to do?\n\t" +
@@ -109,6 +113,37 @@ namespace Challenge_04
                     break;
             }
         }
+
+        private void ListAllBadges()
+        {
+            foreach (KeyValuePair<int, List<string>> pair in _badgedic)
+            {
+                Console.WriteLine($"{pair.Key}\t");
+                Console.WriteLine("Door access    ");
+                foreach (string displayDoors in pair.Value)
+                {
+                    Console.WriteLine($"{displayDoors}\n");
+                }
+            }
+        }
+        private void PrintDoorsByBadge(int id)
+        {
+            List<string> doors = new List<string>();
+            foreach (var badge in _badgedic)
+            {
+                if (id == badge.Key)
+                {
+                    doors = badge.Value;
+                }
+            }
+
+            foreach (var door in doors)
+            {
+                Console.WriteLine(door);
+            }
+        }
+
+
         private void SeedData()
         {
             _kBadgesRepo.AddBadgeToDictionary(new KomodoBadge(123, new List<string>() { "A1", "A2", "A3" }));
