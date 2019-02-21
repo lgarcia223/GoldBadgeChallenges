@@ -8,5 +8,42 @@ namespace Challenge_04
 {
     class KBadgesRepository
     {
+        private List<string> _doorAccessList = new List<string>();
+        private Dictionary<int, List<string>> BadgeDic = new Dictionary<int, List<string>>();
+
+        public List<string> GetList()
+        {
+            return _doorAccessList;
+        }
+
+        public void AddDoortoList(string door)
+        {
+            _doorAccessList.Add(door);
+        }
+
+        public void RemoveDoorFromList(string door)
+        {
+            _doorAccessList.Remove(door);
+        }
+        public void AddBadgeToDictionary(KomodoBadge badge)
+        {
+            BadgeDic.Add(badge.BadgeID, badge.DoorList);
+        }
+        public Dictionary<int, List<string>> GetDictionary()
+        {
+            return BadgeDic;
+        }
+
+        public string ListToString(List<string> doorString)
+        {
+            StringBuilder builder = new StringBuilder();
+            foreach (string door in doorString)
+            {
+                builder.Append(door).Append(",");
+            }
+            builder.Length -= 2;
+            string result = builder.ToString();
+            return result;
+            }
     }
 }
