@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Challenge_04
 {
-    class KBadgesRepository
+    public class KBadgesRepository
     {
         private List<string> _doorAccessList = new List<string>();
         private Dictionary<int, List<string>> BadgeDic = new Dictionary<int, List<string>>();
@@ -33,17 +33,5 @@ namespace Challenge_04
         {
             return BadgeDic;
         }
-
-        public string ListToString(List<string> doorString)
-        {
-            StringBuilder builder = new StringBuilder();
-            foreach (string door in doorString)
-            {
-                builder.Append(door).Append(",");
-            }
-            builder.Length -= 2;
-            string result = builder.ToString();
-            return result;
-            }
     }
 }

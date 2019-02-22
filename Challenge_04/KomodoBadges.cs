@@ -21,6 +21,5 @@ namespace Challenge_04
             BadgeID = badgeID;
             DoorList = doorList;
         }
-
     }
 }

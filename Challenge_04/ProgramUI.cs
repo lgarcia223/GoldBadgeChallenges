@@ -26,6 +26,12 @@ namespace Challenge_04
                     case 2:
                         UpdateBadge();
                         break;
+                    case 3:
+                        ListAllBadges();
+                        break;
+                    case 4:
+                        Console.WriteLine("Goodbye!");
+                        break;
                 }
 
             }
@@ -114,19 +120,31 @@ namespace Challenge_04
             }
         }
 
+        ////private void ListAllBadges()
+        //{
+        //    foreach (KeyValuePair<int, List<string>> pair in _badgedic)
+        //    {
+        //        foreach (string displayDoors in pair.Value)
+        //        {
+        //            Console.WriteLine("BadgeID\t\tDoor Access");
+        //            Console.WriteLine($"{pair.Key}\t\t{displayDoors}\n");
+        //        }
+        //    }
+        //}
+
         private void ListAllBadges()
         {
-            foreach (KeyValuePair<int, List<string>> pair in _badgedic)
+            KomodoBadge badge = new KomodoBadge();
+            foreach (var badges in _badgedic)
             {
-                Console.WriteLine($"{pair.Key}\t");
-                Console.WriteLine("Door access    ");
-                foreach (string displayDoors in pair.Value)
-                {
-                    Console.WriteLine($"{displayDoors}\n");
-                }
+                badge.BadgeID = badges.Key;
+                badge.DoorList = badges.Value;
+                Console.WriteLine("BadgeID\t\tDoor Access");
+                Console.WriteLine($"{badge.BadgeID}\t\t{badge.DoorList}\n");
             }
         }
-        private void PrintDoorsByBadge(int id)
+
+            private void PrintDoorsByBadge(int id)
         {
             List<string> doors = new List<string>();
             foreach (var badge in _badgedic)
